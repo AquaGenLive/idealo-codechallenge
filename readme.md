@@ -25,7 +25,7 @@ Please create a unit-test for only one(!) component, a full test-coverage is not
 ### Backlog
 - [x] Setup Spring Boot app
 - [ ] Create Control and RestController to:
-    - [ ] Create robot resource
+    - [x] Create robot resource
     - [ ] Set init position
     - [ ] Move robot forward 1, 2 or 3 steps
     - [ ] Let robot wait
