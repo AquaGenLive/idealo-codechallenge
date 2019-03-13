@@ -21,3 +21,17 @@ It is optional, if the backend will be also aware of the grid limits.
 Frontend should be styled. You could do it yourself or use some framework. 
 
 Please create a unit-test for only one(!) component, a full test-coverage is not necessary.
+
+### Backlog
+- [x] Setup Spring Boot app
+- [ ] Create Control and RestController to:
+    - [ ] Create robot resource
+    - [ ] Set init position
+    - [ ] Move robot forward 1, 2 or 3 steps
+    - [ ] Let robot wait
+    - [ ] Turnaround
+    - [ ] Turn the robot right
+- [ ] Setup frontend
+- [ ] Create grid
+- [ ] Create controls
+- [ ] Interact with REST API
