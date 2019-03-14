@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RobotControlWebController {
 
-    @GetMapping
+    @GetMapping("/")
     public String index(Model model) {
         ControlFormElementsContainer controlFormElementsContainer = new ControlFormElementsContainer();
         model.addAttribute("controlFormElements", controlFormElementsContainer);
@@ -22,4 +22,5 @@ public class RobotControlWebController {
         model.addAttribute("controlFormElements", controlFormElements);
         return "index";
     }
+
 }

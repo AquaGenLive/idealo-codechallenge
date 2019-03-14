@@ -11,7 +11,7 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <form action="#" th:action="@{/robotMovements}" th:object="${controlFormElements}" method="post">
                 <div class="form-group" id="group-1">
                     <label for="control-1">Robot Control Step 1</label>
@@ -66,24 +66,69 @@
                 <button type="button" id="add-element" class="btn btn-link">Add another control step</button>
                 <button type="submit" class="btn btn-primary float-right">Submit</button>
             </form>
+
+            <script type="text/javascript">
+                // Functionality for the add-element button to control a dynamic command interface.
+                $(document).ready(function() {
+                    $('#add-element').on('click', function () {
+                        var elementId = $("[id^=group-]:hidden")[0].id;
+                        $('#' + elementId).show("slow");
+                        if (elementId == "group-10") {
+                            $('button#add-element').hide();
+                        }
+                    });
+                });
+            </script>
         </div>
-        <div class="col-md-6">
-            <p th:text="'TODO: add RobotGrid'" />
+        <div class="col-md-8">
+            <div class="grid-container">
+                <div class="grid-row">
+                    <div class="grid-col">
+                        <img src="../static/images/robot-right.jpg" th:src="@{/images/robot-right.jpg}" />
+                    </div>
+                    <div class="grid-col">
+                    </div>
+                    <div class="grid-col">
+                    </div>
+                    <div class="grid-col">
+                    </div>
+                    <div class="grid-col">
+                    </div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-col">
+                    </div>
+                    <div class="grid-col">
+                    </div>
+                    <div class="grid-col">
+                    </div>
+                    <div class="grid-col">
+                    </div>
+                    <div class="grid-col">
+                    </div>
+                </div>
+            </div>
+            <style>
+                .grid-container {
+                    display: table;
+                    width: 100%;
+                }
+
+                .grid-row {
+                    display: table-row;
+                    width: 100%;
+                }
+
+                .grid-col {
+                    display: table-cell;
+                    width: 20%;
+                    border: 1px black solid;
+                }
+            </style>
         </div>
     </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function() {
 
-        $('#add-element').on('click', function () {
-            var elementId = $("[id^=group-]:hidden")[0].id;
-            $('#' + elementId).show("slow");
-            if (elementId == "group-10") {
-                $('button#add-element').hide();
-            }
-        });
-    });
-</script>
 </body>
 </html>
