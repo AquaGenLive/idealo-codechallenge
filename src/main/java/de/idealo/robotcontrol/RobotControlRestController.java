@@ -1,20 +1,19 @@
 package de.idealo.robotcontrol;
 
-import de.idealo.robotcontrol.robot.Robot;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
-@RestController
+@Controller
 public class RobotControlRestController {
 
-    @RequestMapping(value = "/info", method = RequestMethod.GET)
-    public String info() {
-        return "Robot Control";
+    @GetMapping
+    public String index() {
+        return "index";
     }
 
-    @RequestMapping(value = "init", method = RequestMethod.POST)
-    public Robot initPosition(Robot robot) {
-        return robot;
+    @PostMapping
+    public String robotMovements() {
+        return null;
     }
 }

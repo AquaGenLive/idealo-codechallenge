@@ -1,5 +1,12 @@
 # Robot Control
 
+## Start application
+TODO
+
+## Usage
+TODO
+
+
 ## Challenge
 Develop a simple environment for a robot where you could control it using this predefined script:
 
@@ -24,7 +31,7 @@ Please create a unit-test for only one(!) component, a full test-coverage is not
 
 ### Backlog
 - [x] Setup Spring Boot app
-- [ ] Create Control and RestController to:
+- [ ] Create Control and Rest?Controller to:
     - [x] Create robot resource
     - [ ] Set init position
     - [ ] Move robot forward 1, 2 or 3 steps
