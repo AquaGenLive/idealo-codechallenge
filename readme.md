@@ -42,3 +42,8 @@ Please create a unit-test for only one(!) component, a full test-coverage is not
 - [ ] Create grid
 - [ ] Create controls
 - [ ] Interact with REST API
+
+### TODOS
+- [ ] Exchange jQuery with React?
+- [ ] Add remove of robot control form elements
+- [ ] Show filled form elements after submitting them (default is display: none on all control elements > 1)

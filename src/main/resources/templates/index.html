@@ -3,19 +3,87 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
-            <p th:text="'TODO: add form'" />
+            <form action="#" th:action="@{/robotMovements}" th:object="${controlFormElements}" method="post">
+                <div class="form-group" id="group-1">
+                    <label for="control-1">Robot Control Step 1</label>
+                    <input type="text" class="form-control" id="control-1" th:field="*{controlFormElement1.control}" placeholder="Enter control step">
+                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
+                </div>
+                <div class="form-group" id="group-2" style="display: none;">
+                    <label for="control-2">Robot Control Step 2</label>
+                    <input type="text" class="form-control" id="control-2" th:field="*{controlFormElement2.control}" placeholder="Enter control step">
+                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
+                </div>
+                <div class="form-group" id="group-3" style="display: none;">
+                    <label for="control-3">Robot Control Step 3</label>
+                    <input type="text" class="form-control" id="control-3" th:field="*{controlFormElement3.control}" placeholder="Enter control step">
+                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
+                </div>
+                <div class="form-group" id="group-4" style="display: none;">
+                    <label for="control-4">Robot Control Step 4</label>
+                    <input type="text" class="form-control" id="control-4" th:field="*{controlFormElement4.control}" placeholder="Enter control step">
+                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
+                </div>
+                <div class="form-group" id="group-5" style="display: none;">
+                    <label for="control-5">Robot Control Step 5</label>
+                    <input type="text" class="form-control" id="control-5" th:field="*{controlFormElement5.control}" placeholder="Enter control step">
+                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
+                </div>
+                <div class="form-group" id="group-6" style="display: none;">
+                    <label for="control-6">Robot Control Step 6</label>
+                    <input type="text" class="form-control" id="control-6" th:field="*{controlFormElement6.control}" placeholder="Enter control step">
+                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
+                </div>
+                <div class="form-group" id="group-7" style="display: none;">
+                    <label for="control-7">Robot Control Step 7</label>
+                    <input type="text" class="form-control" id="control-7" th:field="*{controlFormElement7.control}" placeholder="Enter control step">
+                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
+                </div>
+                <div class="form-group" id="group-8" style="display: none;">
+                    <label for="control-8">Robot Control Step 8</label>
+                    <input type="text" class="form-control" id="control-8" th:field="*{controlFormElement8.control}" placeholder="Enter control step">
+                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
+                </div>
+                <div class="form-group" id="group-9" style="display: none;">
+                    <label for="control-9">Robot Control Step 9</label>
+                    <input type="text" class="form-control" id="control-9" th:field="*{controlFormElement9.control}" placeholder="Enter control step">
+                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
+                </div>
+                <div class="form-group" id="group-10" style="display: none;">
+                    <label for="control-10">Robot Control Step 10</label>
+                    <input type="text" class="form-control" id="control-10" th:field="*{controlFormElement10.control}" placeholder="Enter control step">
+                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
+                </div>
+                <button type="button" id="add-element" class="btn btn-link">Add another control step</button>
+                <button type="submit" class="btn btn-primary float-right">Submit</button>
+            </form>
         </div>
         <div class="col-md-6">
             <p th:text="'TODO: add RobotGrid'" />
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#add-element').on('click', function () {
+            var elementId = $("[id^=group-]:hidden")[0].id;
+            $('#' + elementId).show("slow");
+            if (elementId == "group-10") {
+                $('button#add-element').hide();
+            }
+        });
+    });
+</script>
 </body>
 </html>
