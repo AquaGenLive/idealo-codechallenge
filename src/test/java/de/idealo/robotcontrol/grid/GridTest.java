@@ -9,14 +9,12 @@ class GridTest {
     @org.junit.jupiter.api.Test
     void isRobotPositionWithinGrid() {
         Robot testData = new Robot(1, 3, Robot.Heading.EAST);
-        Grid grid = new Grid();
-        assertTrue(grid.isRobotPositionWithinGrid(testData));
+        assertTrue(Grid.isRobotPositionWithinGrid(testData));
     }
 
     @org.junit.jupiter.api.Test
     void isRobotPositionOutsideTheGrid() {
         Robot testData = new Robot(1, 6, Robot.Heading.EAST);
-        Grid grid = new Grid();
-        assertFalse(grid.isRobotPositionWithinGrid(testData));
+        assertFalse(Grid.isRobotPositionWithinGrid(testData));
     }
 }

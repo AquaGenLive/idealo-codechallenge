@@ -8,7 +8,16 @@ public class Grid {
     private static final int GRID_SIZE_Y = 5;
 
 
-    public boolean isRobotPositionWithinGrid(Robot robot) {
-        return false;
+    public static boolean isRobotPositionWithinGrid(Robot robot) {
+        return robot.getPositionX() <= GRID_SIZE_X && robot.getPositionY() <= GRID_SIZE_Y;
+    }
+
+    public static String gridSize() {
+        return new StringBuilder("x = ")
+                .append(GRID_SIZE_X)
+                .append("; y = ")
+                .append(GRID_SIZE_Y)
+                .append(";")
+                .toString();
     }
 }
