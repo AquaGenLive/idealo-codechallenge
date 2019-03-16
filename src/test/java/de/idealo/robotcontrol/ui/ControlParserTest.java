@@ -3,6 +3,7 @@ package de.idealo.robotcontrol.ui;
 import de.idealo.robotcontrol.Control.ControlParser;
 import de.idealo.robotcontrol.Control.ForwardControl;
 import de.idealo.robotcontrol.Control.PositionControl;
+import de.idealo.robotcontrol.Control.WaitControl;
 import de.idealo.robotcontrol.robot.Robot;
 import org.junit.jupiter.api.Test;
 
@@ -71,5 +72,14 @@ class ControlParserTest {
     void parseControlsForForwardCommandFailureWithoutStep() {
         final ControlFormElement element = new ControlFormElement(1, "FORWARD");
         validateIllegalArguementException(element);
+    }
+
+    @Test
+    void parseControlsForWaitCommand() {
+        final ControlFormElement element = new ControlFormElement(1, "WAIT");
+
+        WaitControl control = (WaitControl) ControlParser.parseControl(element);
+        WaitControl expected = new WaitControl();
+        assertEquals(expected, control);
     }
 }

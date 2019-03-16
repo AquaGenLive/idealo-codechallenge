@@ -10,6 +10,10 @@ public class ControlParser {
             return parsePositionControl(element.getControl());
         } else if (element.getControl().startsWith("FORWARD")) {
             return parseForwardControl(element.getControl());
+        } else if (element.getControl().startsWith("WAIT")) {
+            return new WaitControl();
+        } else if (element.getControl().startsWith("TURNAROUND")) {
+            return new TurnaroundControl();
         }
 
         throw new RuntimeException("Can't find a suitable control for: [" + element.getControl() + "]");

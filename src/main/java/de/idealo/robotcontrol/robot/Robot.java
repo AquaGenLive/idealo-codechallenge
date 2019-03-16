@@ -3,15 +3,17 @@ package de.idealo.robotcontrol.robot;
 import de.idealo.robotcontrol.Control.Control;
 import de.idealo.robotcontrol.Control.ForwardControl;
 import de.idealo.robotcontrol.Control.PositionControl;
+import de.idealo.robotcontrol.Control.TurnaroundControl;
+import de.idealo.robotcontrol.Control.WaitControl;
 import de.idealo.robotcontrol.grid.Position;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+
 @Data
 @AllArgsConstructor
 public class Robot {
-
     public enum Heading {
         NORTH,
         EAST,
@@ -36,8 +38,29 @@ public class Robot {
             movePosition((PositionControl) control);
         } else if (control instanceof ForwardControl) {
             moveForward((ForwardControl) control);
+        } else if (control instanceof WaitControl) {
+            System.out.println("Robot is waiting...");
+        } else if (control instanceof TurnaroundControl) {
+            turnaround();
         } else {
             throw new NotImplementedException();
+        }
+    }
+
+    private void turnaround() {
+        switch (heading) {
+            case NORTH:
+                heading = Heading.SOUTH;
+                break;
+            case EAST:
+                heading = Heading.WEST;
+                break;
+            case SOUTH:
+                heading = Heading.NORTH;
+                break;
+            case WEST:
+                heading = Heading.EAST;
+                break;
         }
     }
 
