@@ -1,6 +1,7 @@
 package de.idealo.robotcontrol.robot;
 
 import de.idealo.robotcontrol.Control.Control;
+import de.idealo.robotcontrol.Control.EmptyControl;
 import de.idealo.robotcontrol.Control.ForwardControl;
 import de.idealo.robotcontrol.Control.PositionControl;
 import de.idealo.robotcontrol.Control.RightControl;
@@ -45,6 +46,8 @@ public class Robot {
             turnaround();
         } else if (control instanceof RightControl) {
             moveHeadingRight();
+        } else if (control instanceof EmptyControl) {
+            System.out.println("Empty control.");
         } else {
             throw new NotImplementedException();
         }

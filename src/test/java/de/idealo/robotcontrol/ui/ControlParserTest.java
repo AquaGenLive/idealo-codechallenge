@@ -1,6 +1,7 @@
 package de.idealo.robotcontrol.ui;
 
 import de.idealo.robotcontrol.Control.ControlParser;
+import de.idealo.robotcontrol.Control.EmptyControl;
 import de.idealo.robotcontrol.Control.ForwardControl;
 import de.idealo.robotcontrol.Control.PositionControl;
 import de.idealo.robotcontrol.Control.RightControl;
@@ -100,6 +101,15 @@ class ControlParserTest {
 
         RightControl control = (RightControl) ControlParser.parseControl(element);
         RightControl expected = new RightControl();
+        assertEquals(expected, control);
+    }
+
+    @Test
+    void parseControlsForEmptyCommand() {
+        final ControlFormElement element = new ControlFormElement(1, "   ");
+
+        EmptyControl control = (EmptyControl) ControlParser.parseControl(element);
+        EmptyControl expected = new EmptyControl();
         assertEquals(expected, control);
     }
 }

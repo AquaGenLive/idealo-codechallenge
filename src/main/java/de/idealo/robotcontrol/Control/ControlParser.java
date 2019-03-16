@@ -16,6 +16,8 @@ public class ControlParser {
             return new TurnaroundControl();
         } else if (element.getControl().startsWith("RIGHT")) {
             return new RightControl();
+        } else if (element.getControl().trim().length() == 0) {
+            return new EmptyControl();
         }
 
         throw new RuntimeException("Can't find a suitable control for: [" + element.getControl() + "]");

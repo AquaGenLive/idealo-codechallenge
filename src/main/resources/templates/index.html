@@ -97,6 +97,9 @@
                                     'controls': [{
                                         'id': 1,
                                         'control': "POSITION 1 3 NORTH"
+                                    }, {
+                                        'id': 2,
+                                        'control': ""
                                     }]
                                 }),
                             success: function(data) {
@@ -125,7 +128,8 @@
                             imageName = "robot-up.jpg";
                         }
 
-                        $('#0-1').prepend('<img src="/images/' + imageName + '" width="100" height="100" />');
+                        var position = "td#" + currentPossitionOfRobot.y + "-" + currentPossitionOfRobot.x;
+                        $(position).prepend('<img src="/images/' + imageName + '" width="100" height="100" />');
                     }
                 });
             </script>
@@ -133,46 +137,58 @@
         <div class="col-md-8">
             <div class="table-responsive-md">
                 <table class="table table-bordered vh-100">
-                    <tbody>
-                        <tr class="h-20 mh-20">
-                            <td id="0-0" class="w-20 mw-20 p-3">
-                                <img src="../static/images/robot-right.jpg" th:src="@{/images/robot-right.jpg}" width="100" height="100" />
-                            </td>
-                            <td id="0-1" class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                        </tr>
-                        <tr class="h-20 mh-20 ">
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                        </tr>
-                        <tr class="h-20 mh-20 ">
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                        </tr>
-                        <tr class="h-20 mh-20 ">
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                        </tr>
-                        <tr class="h-20 mh-20 ">
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                            <td class="w-20 mw-20 p-3"></td>
-                        </tr>
+                    <tbody id="robot-grid">
+                        <!--<tr class="h-20 mh-20">-->
+                            <!--<td id="0-0" class="w-20 mw-20 p-3"></td>-->
+                            <!--<td id="0-1" class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                        <!--</tr>-->
+                        <!--<tr class="h-20 mh-20 ">-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                        <!--</tr>-->
+                        <!--<tr class="h-20 mh-20 ">-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                        <!--</tr>-->
+                        <!--<tr class="h-20 mh-20 ">-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                        <!--</tr>-->
+                        <!--<tr class="h-20 mh-20 ">-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                            <!--<td class="w-20 mw-20 p-3"></td>-->
+                        <!--</tr>-->
                     </tbody>
                 </table>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        var table = $('tbody#robot-grid');
+                        var currentRow;
+
+                        for (var i = 0; i < 5; i++) {
+                            table.append('<tr id="grid-row-' + i + '" class="h-20 mh-20"></tr>');
+                            currentRow = $('tr#grid-row-' + i);
+                            for (var j = 0; j < 5; j++) {
+                                currentRow.append('<td id="' + i + '-' + j + '" class="w-20 mw-20 p-3"></td>');
+                            }
+                        }
+                    });
+                </script>
             </div>
         </div>
     </div>
