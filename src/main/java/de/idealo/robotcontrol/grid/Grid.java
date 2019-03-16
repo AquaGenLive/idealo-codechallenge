@@ -1,5 +1,7 @@
 package de.idealo.robotcontrol.grid;
 
+import de.idealo.robotcontrol.Control.Control;
+import de.idealo.robotcontrol.Control.ControlParser;
 import de.idealo.robotcontrol.robot.Robot;
 import de.idealo.robotcontrol.ui.ControlFormElement;
 import lombok.AllArgsConstructor;
@@ -42,12 +44,11 @@ public class Grid {
     public Robot moveRobot(List<ControlFormElement> controlFormElements) {
         controlFormElements.sort(Comparator.comparingLong(ControlFormElement::getId));
 
-        for (ControlFormElement control : controlFormElements) {
-            if (control.getControl().startsWith("POSITION")) {
-                StringTokenizer tokenizer = new StringTokenizer(control.getControl(), " ");
-                if (tokenizer.countTokens() != 4) {
-                    throw new IllegalArgumentException("POSITION command needs the form 'POSITION x y HEADING' e.g. 'POSITION 1 3 EAST'");
-                }
+        for (ControlFormElement controlElement : controlFormElements) {
+            Control control = ControlParser.parseControl(controlElement);
+            robot.move(control);
+            if (!isRobotPositionWithinGrid()) {
+                throw new OutOfGridException();
             }
         }
         return robot;
