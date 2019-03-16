@@ -11,7 +11,7 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <!-- Control Field View -->
+        <!-- control Field View -->
         <div class="col-md-4">
             <form action="#" th:action="@{/robotMovements}" th:object="${controlFormElements}" method="post" id="controls-form">
                 <div class="form-group" id="group-1">
@@ -121,7 +121,7 @@
                                 clearInputFields();
                             },
                             error: function (error) {
-                                alert("Error: " + error);
+                                alert(error.responseJSON.error + "! " + error.responseJSON.message);
                             }
                         });
                     });

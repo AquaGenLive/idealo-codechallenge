@@ -1,11 +1,12 @@
 package de.idealo.robotcontrol.robot;
 
-import de.idealo.robotcontrol.Control.Control;
-import de.idealo.robotcontrol.Control.ForwardControl;
-import de.idealo.robotcontrol.Control.PositionControl;
-import de.idealo.robotcontrol.Control.RightControl;
-import de.idealo.robotcontrol.Control.TurnaroundControl;
+import de.idealo.robotcontrol.control.Control;
+import de.idealo.robotcontrol.control.ForwardControl;
+import de.idealo.robotcontrol.control.PositionControl;
+import de.idealo.robotcontrol.control.RightControl;
+import de.idealo.robotcontrol.control.TurnaroundControl;
 import de.idealo.robotcontrol.grid.Position;
+import de.idealo.robotcontrol.grid.Robot;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +19,7 @@ class RobotTest {
         Robot robot = Robot.robotOnStartPosition();
 
         robot.move(control);
-        assertTrue(robot.isRobotOnPosition(new Position(2, 2)));
+        assertTrue(robot.isOnPosition(new Position(2, 2)));
         assertEquals(Robot.Heading.SOUTH, robot.getHeading());
     }
 

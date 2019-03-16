@@ -48,6 +48,7 @@ Please create a unit-test for only one(!) component, a full test-coverage is not
 - [ ] Add remove of robot control form elements
 - [ ] Show filled form elements after submitting them (default is display: none on all control elements > 1)
 - [ ] Grid could be a many div's with image display:inline
+- [ ] Exception handling in frontend
 
 Generelles Vorgehen:
 - Frontend hält den State, backend ist stateless -> Das Frotnend muss bei jedem Request die aktuelle Postion des Roboters mitschicken

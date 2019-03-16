@@ -1,25 +1,25 @@
-package de.idealo.robotcontrol.Control;
+package de.idealo.robotcontrol.control;
 
-import de.idealo.robotcontrol.robot.Robot;
+import de.idealo.robotcontrol.grid.Robot;
 import de.idealo.robotcontrol.ui.ControlFormElement;
 
 public class ControlParser {
 
     /**
-     * Parses a given {@code ControlFormElement} into a {@code Control}.
+     * Parses a given {@code ControlFormElement} into a {@code control}.
      * @param element UI input.
-     * @return A {@code Control}.
+     * @return A {@code control}.
      */
     public static Control parseControl(ControlFormElement element) {
-        if (element.getControl().startsWith("POSITION")) {
+        if (element.getControl().toUpperCase().startsWith("POSITION")) {
             return parsePositionControl(element.getControl());
-        } else if (element.getControl().startsWith("FORWARD")) {
+        } else if (element.getControl().toUpperCase().startsWith("FORWARD")) {
             return parseForwardControl(element.getControl());
-        } else if (element.getControl().startsWith("WAIT")) {
+        } else if (element.getControl().toUpperCase().startsWith("WAIT")) {
             return new WaitControl();
-        } else if (element.getControl().startsWith("TURNAROUND")) {
+        } else if (element.getControl().toUpperCase().startsWith("TURNAROUND")) {
             return new TurnaroundControl();
-        } else if (element.getControl().startsWith("RIGHT")) {
+        } else if (element.getControl().toUpperCase().startsWith("RIGHT")) {
             return new RightControl();
         } else if (element.getControl().trim().length() == 0) {
             return new EmptyControl();

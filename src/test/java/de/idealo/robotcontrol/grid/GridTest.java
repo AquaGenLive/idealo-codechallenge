@@ -1,8 +1,5 @@
 package de.idealo.robotcontrol.grid;
 
-import de.idealo.robotcontrol.robot.Robot;
-import org.mockito.Mockito;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 

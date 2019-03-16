@@ -1,13 +1,12 @@
-package de.idealo.robotcontrol.robot;
+package de.idealo.robotcontrol.grid;
 
-import de.idealo.robotcontrol.Control.Control;
-import de.idealo.robotcontrol.Control.EmptyControl;
-import de.idealo.robotcontrol.Control.ForwardControl;
-import de.idealo.robotcontrol.Control.PositionControl;
-import de.idealo.robotcontrol.Control.RightControl;
-import de.idealo.robotcontrol.Control.TurnaroundControl;
-import de.idealo.robotcontrol.Control.WaitControl;
-import de.idealo.robotcontrol.grid.Position;
+import de.idealo.robotcontrol.control.Control;
+import de.idealo.robotcontrol.control.EmptyControl;
+import de.idealo.robotcontrol.control.ForwardControl;
+import de.idealo.robotcontrol.control.PositionControl;
+import de.idealo.robotcontrol.control.RightControl;
+import de.idealo.robotcontrol.control.TurnaroundControl;
+import de.idealo.robotcontrol.control.WaitControl;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -26,12 +25,15 @@ public class Robot {
     private Position position;
     private Heading heading;
 
+    /**
+     * @return start position is x=0; y=0; heading=EAST.
+     */
     public static Robot robotOnStartPosition() {
         return new Robot(new Position(0, 0), Heading.EAST);
     }
 
 
-    public boolean isRobotOnPosition(Position position) {
+    public boolean isOnPosition(Position position) {
         return this.position.equals(position);
     }
 

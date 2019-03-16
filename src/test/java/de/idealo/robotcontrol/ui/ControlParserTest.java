@@ -1,13 +1,13 @@
 package de.idealo.robotcontrol.ui;
 
-import de.idealo.robotcontrol.Control.ControlParser;
-import de.idealo.robotcontrol.Control.EmptyControl;
-import de.idealo.robotcontrol.Control.ForwardControl;
-import de.idealo.robotcontrol.Control.PositionControl;
-import de.idealo.robotcontrol.Control.RightControl;
-import de.idealo.robotcontrol.Control.TurnaroundControl;
-import de.idealo.robotcontrol.Control.WaitControl;
-import de.idealo.robotcontrol.robot.Robot;
+import de.idealo.robotcontrol.control.ControlParser;
+import de.idealo.robotcontrol.control.EmptyControl;
+import de.idealo.robotcontrol.control.ForwardControl;
+import de.idealo.robotcontrol.control.PositionControl;
+import de.idealo.robotcontrol.control.RightControl;
+import de.idealo.robotcontrol.control.TurnaroundControl;
+import de.idealo.robotcontrol.control.WaitControl;
+import de.idealo.robotcontrol.grid.Robot;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

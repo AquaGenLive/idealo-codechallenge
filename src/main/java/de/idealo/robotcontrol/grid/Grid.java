@@ -1,16 +1,17 @@
 package de.idealo.robotcontrol.grid;
 
-import de.idealo.robotcontrol.Control.Control;
-import de.idealo.robotcontrol.Control.ControlParser;
-import de.idealo.robotcontrol.robot.Robot;
+import de.idealo.robotcontrol.control.Control;
+import de.idealo.robotcontrol.control.ControlParser;
 import de.idealo.robotcontrol.ui.ControlFormElement;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Domain representation of a Grid where a {@code Robot} is moving around.
+ */
 @AllArgsConstructor
 public class Grid {
 

@@ -1,4 +1,4 @@
-package de.idealo.robotcontrol.Control;
+package de.idealo.robotcontrol.control;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

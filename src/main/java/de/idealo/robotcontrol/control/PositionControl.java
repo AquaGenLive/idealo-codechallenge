@@ -1,6 +1,6 @@
-package de.idealo.robotcontrol.Control;
+package de.idealo.robotcontrol.control;
 
-import de.idealo.robotcontrol.robot.Robot;
+import de.idealo.robotcontrol.grid.Robot;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
