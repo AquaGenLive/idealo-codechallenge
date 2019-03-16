@@ -1,6 +1,7 @@
 package de.idealo.robotcontrol.robot;
 
 import de.idealo.robotcontrol.Control.Control;
+import de.idealo.robotcontrol.Control.ForwardControl;
 import de.idealo.robotcontrol.Control.PositionControl;
 import de.idealo.robotcontrol.grid.Position;
 import lombok.AllArgsConstructor;
@@ -33,8 +34,27 @@ public class Robot {
     public void move(Control control) {
         if (control instanceof PositionControl) {
             movePosition((PositionControl) control);
+        } else if (control instanceof ForwardControl) {
+            moveForward((ForwardControl) control);
         } else {
             throw new NotImplementedException();
+        }
+    }
+
+    private void moveForward(ForwardControl control) {
+        switch (heading) {
+            case EAST:
+                position.addX(control.getSteps());
+                break;
+            case SOUTH:
+                position.addY(control.getSteps());
+                break;
+            case WEST:
+                position.addX(control.getSteps() * -1);
+                break;
+            case NORTH:
+                position.addY(control.getSteps() * -1);
+                break;
         }
     }
 
