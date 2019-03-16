@@ -5,6 +5,11 @@ import de.idealo.robotcontrol.ui.ControlFormElement;
 
 public class ControlParser {
 
+    /**
+     * Parses a given {@code ControlFormElement} into a {@code Control}.
+     * @param element UI input.
+     * @return A {@code Control}.
+     */
     public static Control parseControl(ControlFormElement element) {
         if (element.getControl().startsWith("POSITION")) {
             return parsePositionControl(element.getControl());

@@ -10,7 +10,6 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.StringTokenizer;
 
 @AllArgsConstructor
 public class Grid {
@@ -19,25 +18,6 @@ public class Grid {
     private int gridMaxSizeY;
     @Getter
     private Robot robot;
-    private List<GridRow> gridRows;
-
-    public Grid(int gridMaxSideX, int gridMaxSizeY, Robot robot) {
-        this.gridMaxSideX = gridMaxSideX;
-        this.gridMaxSizeY = gridMaxSizeY;
-        this.robot = robot;
-        initGridRows();
-    }
-
-    private void initGridRows() {
-        this.gridRows = new ArrayList<>();
-        for (int y = 0; y < gridMaxSizeY; y++) {
-            GridRow row = new GridRow(y);
-            for (int x = 0; x < gridMaxSideX; x++) {
-                row.addElement(new GridElement(x, robot.isRobotOnPosition(new Position(x, y))));
-            }
-            gridRows.add(row);
-        }
-    }
 
     public boolean isRobotPositionWithinGrid() {
         return robot.getPosition().getX() <= gridMaxSideX &&
@@ -57,18 +37,5 @@ public class Grid {
             }
         }
         return robot;
-    }
-
-    public static Position getStartPosition() {
-        return new Position(0, 0);
-    }
-
-    public String gridSize() {
-        return new StringBuilder("x = ")
-                .append(gridMaxSideX)
-                .append("; y = ")
-                .append(gridMaxSizeY)
-                .append(";")
-                .toString();
     }
 }
