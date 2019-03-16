@@ -14,6 +14,8 @@ public class ControlParser {
             return new WaitControl();
         } else if (element.getControl().startsWith("TURNAROUND")) {
             return new TurnaroundControl();
+        } else if (element.getControl().startsWith("RIGHT")) {
+            return new RightControl();
         }
 
         throw new RuntimeException("Can't find a suitable control for: [" + element.getControl() + "]");

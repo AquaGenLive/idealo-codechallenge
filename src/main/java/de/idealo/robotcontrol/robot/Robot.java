@@ -3,6 +3,7 @@ package de.idealo.robotcontrol.robot;
 import de.idealo.robotcontrol.Control.Control;
 import de.idealo.robotcontrol.Control.ForwardControl;
 import de.idealo.robotcontrol.Control.PositionControl;
+import de.idealo.robotcontrol.Control.RightControl;
 import de.idealo.robotcontrol.Control.TurnaroundControl;
 import de.idealo.robotcontrol.Control.WaitControl;
 import de.idealo.robotcontrol.grid.Position;
@@ -42,8 +43,27 @@ public class Robot {
             System.out.println("Robot is waiting...");
         } else if (control instanceof TurnaroundControl) {
             turnaround();
+        } else if (control instanceof RightControl) {
+            moveHeadingRight();
         } else {
             throw new NotImplementedException();
+        }
+    }
+
+    private void moveHeadingRight() {
+        switch (heading) {
+            case NORTH:
+                heading = Heading.EAST;
+                break;
+            case EAST:
+                heading = Heading.SOUTH;
+                break;
+            case SOUTH:
+                heading = Heading.WEST;
+                break;
+            case WEST:
+                heading = Heading.NORTH;
+                break;
         }
     }
 

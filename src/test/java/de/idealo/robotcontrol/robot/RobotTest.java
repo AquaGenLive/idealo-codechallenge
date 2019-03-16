@@ -3,6 +3,7 @@ package de.idealo.robotcontrol.robot;
 import de.idealo.robotcontrol.Control.Control;
 import de.idealo.robotcontrol.Control.ForwardControl;
 import de.idealo.robotcontrol.Control.PositionControl;
+import de.idealo.robotcontrol.Control.RightControl;
 import de.idealo.robotcontrol.Control.TurnaroundControl;
 import de.idealo.robotcontrol.grid.Position;
 import org.junit.jupiter.api.Test;
@@ -59,5 +60,23 @@ class RobotTest {
 
         robot.move(control);
         assertEquals(Robot.Heading.NORTH, robot.getHeading());
+    }
+
+    @Test
+    void moveHeadingRight() {
+        final Control control = new RightControl();
+        Robot robot = Robot.robotOnStartPosition();
+
+        robot.move(control);
+        assertEquals(Robot.Heading.SOUTH, robot.getHeading());
+
+        robot.move(control);
+        assertEquals(Robot.Heading.WEST, robot.getHeading());
+
+        robot.move(control);
+        assertEquals(Robot.Heading.NORTH, robot.getHeading());
+
+        robot.move(control);
+        assertEquals(Robot.Heading.EAST, robot.getHeading());
     }
 }
