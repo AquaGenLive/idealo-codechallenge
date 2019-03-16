@@ -73,6 +73,7 @@
                         "x": 0,
                         "y": 0
                     };
+                    var currentHeadingOfRobot = "EAST";
 
 
                     // Functionality for the add-element button to control a dynamic command interface.
@@ -86,16 +87,46 @@
 
                     // Functionality for the submit button to do an AJAX request.
                     $('#submit-button').on('click', function() {
-                       $.post("/robot/movement", {
-                           'currentPossitionOfRobot': currentPossitionOfRobot,
-                           "controls": []
-                       })
-                           .done(function (data) {
-                               alert(data);
-                               // TODO render new robot
-                               // TODO clear input fields
-                           })
+                        $.ajax({
+                            type: "POST",
+                            contentType: "application/json",
+                            url: "/robot/movement",
+                            dataType: "json",
+                            data: JSON.stringify({
+                                    'currentPossitionOfRobot': currentPossitionOfRobot,
+                                    'controls': [{
+                                        'id': 1,
+                                        'control': "POSITION 1 3 NORTH"
+                                    }]
+                                }),
+                            success: function(data) {
+                                console.log(data);
+                                alert("Success: " + data);
+                                currentHeadingOfRobot = data.heading;
+                                currentPossitionOfRobot = data.position;
+                                renderRobot();
+                                // TODO clear input fields
+                            },
+                            error: function (error) {
+                                alert("Error: " + error);
+                            }
+                        });
                     });
+
+                    function renderRobot() {
+                        var imageName;
+                        if (currentHeadingOfRobot === "EAST") {
+                            imageName = "robot-right.jpg";
+                        } else if (currentHeadingOfRobot === "SOUTH") {
+                            imageName = "robot-down.jpg";
+                        } else if (currentHeadingOfRobot === "WEST") {
+                            imageName = "robot-left.jpg";
+                        } else {
+                            imageName = "robot-up.jpg";
+                        }
+
+                        $('#0-1').prepend('<img src="/images/' + imageName + '" width="100" height="100" />');
+                    }
                 });
             </script>
         </div>
@@ -107,18 +138,10 @@
                             <td id="0-0" class="w-20 mw-20 p-3">
                                 <img src="../static/images/robot-right.jpg" th:src="@{/images/robot-right.jpg}" width="100" height="100" />
                             </td>
-                            <td id="0-1" class="w-20 mw-20 p-3">
-                                <!--<img src="../static/images/robot-right.jpg" th:src="@{/images/robot-right.jpg}" />-->
-                            </td>
-                            <td class="w-20 mw-20 p-3">
-                                <!--<img src="../static/images/robot-right.jpg" th:src="@{/images/robot-right.jpg}" />-->
-                            </td>
-                            <td class="w-20 mw-20 p-3">
-                                <!--<img src="../static/images/robot-right.jpg" th:src="@{/images/robot-right.jpg}" />-->
-                            </td>
-                            <td class="w-20 mw-20 p-3">
-                                <!--<img src="../static/images/robot-right.jpg" th:src="@{/images/robot-right.jpg}" />-->
-                            </td>
+                            <td id="0-1" class="w-20 mw-20 p-3"></td>
+                            <td class="w-20 mw-20 p-3"></td>
+                            <td class="w-20 mw-20 p-3"></td>
+                            <td class="w-20 mw-20 p-3"></td>
                         </tr>
                         <tr class="h-20 mh-20 ">
                             <td class="w-20 mw-20 p-3"></td>
