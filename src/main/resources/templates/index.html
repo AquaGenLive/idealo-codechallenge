@@ -12,7 +12,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4">
-            <form action="#" th:action="@{/robotMovements}" th:object="${controlFormElements}" method="post">
+            <form action="#" th:action="@{/robotMovements}" th:object="${controlFormElements}" method="post" id="controls-form">
                 <div class="form-group" id="group-1">
                     <label for="control-1">Robot Control Step 1</label>
                     <input type="text" class="form-control" id="control-1" th:field="*{controlFormElement1.control}" placeholder="Enter control step">
@@ -127,13 +127,21 @@
                                 currentHeadingOfRobot = data.heading;
                                 currentPossitionOfRobot = data.position;
                                 renderRobot();
-                                // TODO clear input fields
+                                clearInputFields();
                             },
                             error: function (error) {
                                 alert("Error: " + error);
                             }
                         });
                     });
+
+                    function clearInputFields() {
+                        $(':input','#controls-form')
+                            .not(':button, :submit, :reset, :hidden')
+                            .val('')
+                            .prop('checked', false)
+                            .prop('selected', false);
+                    }
                 });
             </script>
         </div>
