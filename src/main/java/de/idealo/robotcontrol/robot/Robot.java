@@ -1,5 +1,6 @@
 package de.idealo.robotcontrol.robot;
 
+import de.idealo.robotcontrol.grid.Position;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -14,9 +15,12 @@ public class Robot {
         WEST;
     }
 
-    private int positionX;
-    private int positionY;
+    private Position position;
     private Heading heading;
-    private static final String NAME = "Charly";
+
+
+    public boolean isRobotOnPosition(Position position) {
+        return this.position.equals(position);
+    }
 
 }

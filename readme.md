@@ -47,3 +47,9 @@ Please create a unit-test for only one(!) component, a full test-coverage is not
 - [ ] Exchange jQuery with React?
 - [ ] Add remove of robot control form elements
 - [ ] Show filled form elements after submitting them (default is display: none on all control elements > 1)
+- [ ] Grid could be a many div's with image display:inline
+
+Generelles Vorgehen:
+- Frontend hält den State, backend ist stateless -> Das Frotnend muss bei jedem Request die aktuelle Postion des Roboters mitschicken
+- Den dynamischen Part im Frontend via Thymeleave zu machen ist echt nervig. Dafür ist Thymeleave wohl nicht ausgelegt. Besser ist es wohl das in JS zu machen.
+    - Das bedeutet, ich sollte erstmal mit jQuery einen AJAX Request machen.

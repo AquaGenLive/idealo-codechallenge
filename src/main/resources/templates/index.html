@@ -64,18 +64,37 @@
                     <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
                 </div>
                 <button type="button" id="add-element" class="btn btn-link">Add another control step</button>
-                <button type="submit" class="btn btn-primary float-right">Submit</button>
+                <button type="button" id="submit-button" class="btn btn-primary float-right">Submit</button>
             </form>
 
             <script type="text/javascript">
-                // Functionality for the add-element button to control a dynamic command interface.
                 $(document).ready(function() {
+                    var currentPossitionOfRobot = {
+                        "x": 0,
+                        "y": 0
+                    };
+
+
+                    // Functionality for the add-element button to control a dynamic command interface.
                     $('#add-element').on('click', function () {
                         var elementId = $("[id^=group-]:hidden")[0].id;
                         $('#' + elementId).show("slow");
                         if (elementId == "group-10") {
                             $('button#add-element').hide();
                         }
+                    });
+
+                    // Functionality for the submit button to do an AJAX request.
+                    $('#submit-button').on('click', function() {
+                       $.post("/robot/movement", {
+                           'currentPossitionOfRobot': currentPossitionOfRobot,
+                           "controls": []
+                       })
+                           .done(function (data) {
+                               alert(data);
+                               // TODO render new robot
+                               // TODO clear input fields
+                           })
                     });
                 });
             </script>
@@ -85,10 +104,10 @@
                 <table class="table table-bordered vh-100">
                     <tbody>
                         <tr class="h-20 mh-20">
-                            <td class="w-20 mw-20 p-3">
+                            <td id="0-0" class="w-20 mw-20 p-3">
                                 <img src="../static/images/robot-right.jpg" th:src="@{/images/robot-right.jpg}" width="100" height="100" />
                             </td>
-                            <td class="w-20 mw-20 p-3">
+                            <td id="0-1" class="w-20 mw-20 p-3">
                                 <!--<img src="../static/images/robot-right.jpg" th:src="@{/images/robot-right.jpg}" />-->
                             </td>
                             <td class="w-20 mw-20 p-3">
