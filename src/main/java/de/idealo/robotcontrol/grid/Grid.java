@@ -20,6 +20,10 @@ public class Grid {
     @Getter
     private Robot robot;
 
+    public static Grid defaultGrid(Robot robot) {
+        return new Grid(5, 5, robot);
+    }
+
     public boolean isRobotPositionWithinGrid() {
         return robot.getPosition().getX() <= gridMaxSideX &&
                 robot.getPosition().getY() <= gridMaxSizeY &&
@@ -32,7 +36,7 @@ public class Grid {
 
         for (ControlFormElement controlElement : controlFormElements) {
             Control control = ControlParser.parseControl(controlElement);
-            robot.move(control);
+            control.move(robot);
             if (!isRobotPositionWithinGrid()) {
                 throw new OutOfGridException();
             }

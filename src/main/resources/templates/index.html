@@ -69,7 +69,7 @@
             </form>
 
             <script type="text/javascript">
-                var currentPossitionOfRobot = {
+                var currentPositionOfRobot = {
                     "x": 0,
                     "y": 0
                 };
@@ -87,7 +87,7 @@
                         imageName = "robot-up.jpg";
                     }
 
-                    var position = "td#" + currentPossitionOfRobot.y + "-" + currentPossitionOfRobot.x;
+                    var position = "td#" + currentPositionOfRobot.y + "-" + currentPositionOfRobot.x;
                     $(position).prepend('<img src="/images/' + imageName + '" width="100" height="100" id="robot-img" />');
                 }
 
@@ -110,13 +110,13 @@
                         $.ajax({
                             type: "POST",
                             contentType: "application/json",
-                            url: "/robot/movement",
+                            url: "/robot-movements",
                             dataType: "json",
                             data: JSON.stringify(createApiPayload()),
                             success: function(data) {
                                 removeRobot();
                                 currentHeadingOfRobot = data.heading;
-                                currentPossitionOfRobot = data.position;
+                                currentPositionOfRobot = data.position;
                                 renderRobot();
                                 clearInputFields();
                             },
@@ -136,7 +136,7 @@
                         }
 
                         return {
-                            'currentPossitionOfRobot': currentPossitionOfRobot,
+                            'currentPositionOfRobot': currentPositionOfRobot,
                             'currentHeadingOfRobot': currentHeadingOfRobot,
                             'controls': controls
                         };

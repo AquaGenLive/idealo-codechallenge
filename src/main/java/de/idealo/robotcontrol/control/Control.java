@@ -1,8 +1,11 @@
 package de.idealo.robotcontrol.control;
 
+import de.idealo.robotcontrol.grid.Robot;
+
 /**
- * Marker interface for {@code Robot} commands / movements.
+ * Interface to run {@code Robot} commands / movements.
  */
 public interface Control {
 
+    void move(Robot robot);
 }

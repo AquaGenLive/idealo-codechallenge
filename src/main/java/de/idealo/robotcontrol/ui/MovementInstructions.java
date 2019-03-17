@@ -9,8 +9,8 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class FrontendInput {
-    private Position currentPossitionOfRobot;
+public class MovementInstructions {
+    private Position currentPositionOfRobot;
     private Robot.Heading currentHeadingOfRobot;
     private List<ControlFormElement> controls;
 }
