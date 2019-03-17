@@ -1,10 +1,12 @@
 # Robot Control
 
 ## Start application
-Run the command:
+Run the app with maven-wrapper command:
 ```
+mvn -N io.takari:maven:wrapper
 ./mvnw spring-boot:run
 ```
+
 Or start the app via IDE with Run-Configuration for Spring-Boot.
 
 ## Usage
