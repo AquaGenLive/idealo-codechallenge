@@ -1,18 +1,26 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Robot Control - Idealo Code Challenge</title>
+    <link rel="shortcut icon" href="https://cdn.idealo.com/storage/ipc/favicon.ico">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="jumbotron jumbotron-fluid idealo-background">
+    <div class="container">
+        <h1 class="display-4">Robot Control</h1>
+        <p class="lead">Idealo Code Challenge</p>
+    </div>
+</div>
+
 <div class="container-fluid">
     <div class="row">
         <!-- control Field View -->
-        <div class="col-md-4">
+        <div class="col-md-4 scroll-md p-2">
             <form action="#" th:action="@{/robotMovements}" th:object="${controlFormElements}" method="post" id="controls-form">
                 <div class="form-group" id="group-1">
                     <label for="control-1">Robot Control Step 1</label>
@@ -88,7 +96,7 @@
                     }
 
                     var position = "td#" + currentPositionOfRobot.y + "-" + currentPositionOfRobot.x;
-                    $(position).prepend('<img src="/images/' + imageName + '" width="100" height="100" id="robot-img" />');
+                    $(position).prepend('<img src="/images/' + imageName + '" id="robot-img" />');
                 }
 
                 function removeRobot() {
@@ -162,7 +170,7 @@
             </script>
         </div>
         <!-- Gird View -->
-        <div class="col-md-8">
+        <div class="col-md-8 p-2">
             <div class="table-responsive-md">
                 <table class="table table-bordered vh-100">
                     <tbody id="robot-grid">
@@ -177,7 +185,7 @@
                             table.append('<tr id="grid-row-' + i + '" class="h-20 mh-20"></tr>');
                             currentRow = $('tr#grid-row-' + i);
                             for (var j = 0; j < 5; j++) {
-                                currentRow.append('<td id="' + i + '-' + j + '" class="w-20 mw-20 p-3"></td>');
+                                currentRow.append('<td id="' + i + '-' + j + '" class="w-20 mw-20"></td>');
                             }
                         }
 

@@ -1,0 +1,26 @@
+.idealo-background {
+    background-color: #0C2F4E;
+    color: #FFFFFF;
+}
+
+@media (min-width: 768px) {
+    .scroll-md {
+        overflow: auto;
+        max-height: 100vh;
+    }
+}
+
+tr {
+    height: 100px;
+}
+
+td {
+    max-width: 1em;
+    max-height: 1em;
+}
+
+td img {
+    display: block;
+    width: 100%;
+    max-width: 100px;
+}
