@@ -22,61 +22,14 @@
         <!-- control Field View -->
         <div class="col-md-4 scroll-md p-2">
             <form action="#" method="post" id="controls-form">
-                <div class="form-group" id="group-1">
-                    <label for="control-1">Robot Control Step 1</label>
-                    <input type="text" class="form-control" id="control-1" placeholder="Enter control step">
-                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
-                </div>
-                <div class="form-group" id="group-2" style="display: none;">
-                    <label for="control-2">Robot Control Step 2</label>
-                    <input type="text" class="form-control" id="control-2" placeholder="Enter control step">
-                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
-                </div>
-                <div class="form-group" id="group-3" style="display: none;">
-                    <label for="control-3">Robot Control Step 3</label>
-                    <input type="text" class="form-control" id="control-3" placeholder="Enter control step">
-                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
-                </div>
-                <div class="form-group" id="group-4" style="display: none;">
-                    <label for="control-4">Robot Control Step 4</label>
-                    <input type="text" class="form-control" id="control-4" placeholder="Enter control step">
-                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
-                </div>
-                <div class="form-group" id="group-5" style="display: none;">
-                    <label for="control-5">Robot Control Step 5</label>
-                    <input type="text" class="form-control" id="control-5" placeholder="Enter control step">
-                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
-                </div>
-                <div class="form-group" id="group-6" style="display: none;">
-                    <label for="control-6">Robot Control Step 6</label>
-                    <input type="text" class="form-control" id="control-6" placeholder="Enter control step">
-                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
-                </div>
-                <div class="form-group" id="group-7" style="display: none;">
-                    <label for="control-7">Robot Control Step 7</label>
-                    <input type="text" class="form-control" id="control-7" placeholder="Enter control step">
-                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
-                </div>
-                <div class="form-group" id="group-8" style="display: none;">
-                    <label for="control-8">Robot Control Step 8</label>
-                    <input type="text" class="form-control" id="control-8" placeholder="Enter control step">
-                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
-                </div>
-                <div class="form-group" id="group-9" style="display: none;">
-                    <label for="control-9">Robot Control Step 9</label>
-                    <input type="text" class="form-control" id="control-9" placeholder="Enter control step">
-                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
-                </div>
-                <div class="form-group" id="group-10" style="display: none;">
-                    <label for="control-10">Robot Control Step 10</label>
-                    <input type="text" class="form-control" id="control-10" placeholder="Enter control step">
-                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>
+                <div id="control-inputs">
                 </div>
                 <button type="button" id="add-element" class="btn btn-link">Add another control step</button>
                 <button type="button" id="submit-button" class="btn btn-primary float-right">Submit</button>
             </form>
 
             <script type="text/javascript">
+                // robot state information
                 var currentPositionOfRobot = {
                     "x": 0,
                     "y": 0
@@ -103,14 +56,23 @@
                     $('img#robot-img').remove();
                 }
 
+                function addControlInputElement(id) {
+                    $('#control-inputs').append('<div class="form-group" id="group-' + id + '">\n' +
+                                '                    <label for="control-' + id + '">Robot Control Step ' + id +'</label>\n' +
+                                '                    <input type="text" class="form-control" id="control-' + id + '" placeholder="Enter control step">\n' +
+                                '                    <small class="form-text text-muted">Valid inputs are: POSITION 1 3 EAST, [FORWARD 1 | 2 | 3], WAIT, TURNAROUND, or RIGHT</small>\n' +
+                                '                </div>')
+                }
+
+                function countControlInputElements() {
+                    return $("[id^=group-]").length;
+                }
+
                 $(document).ready(function() {
                     // Functionality for the add-element button to control a dynamic command interface.
                     $('#add-element').on('click', function () {
-                        var elementId = $("[id^=group-]:hidden")[0].id;
-                        $('#' + elementId).show("slow");
-                        if (elementId == "group-10") {
-                            $('button#add-element').hide();
-                        }
+                        var count = countControlInputElements();
+                        addControlInputElement(count + 1);
                     });
 
                     // Functionality for the submit button to do an AJAX request.
@@ -136,7 +98,7 @@
 
                     function createApiPayload() {
                         var controls = [];
-                        for (var i = 1; i <= 10; i++) {
+                        for (var i = 1; i <= countControlInputElements(); i++) {
                             if ($('#control-' + i).is(":visible")) {
                                 var value = $('#control-' + i).val();
                                 controls.push(createControlEntry(i, value))
@@ -164,7 +126,12 @@
                             .prop('checked', false)
                             .prop('selected', false);
 
-                        // TODO reset visibility of input fields
+                        resetInputFields();
+                    }
+
+                    function resetInputFields() {
+                        $("[id^=group-]").remove();
+                        addControlInputElement(1);
                     }
                 });
             </script>
@@ -189,8 +156,13 @@
                             }
                         }
 
-                        renderRobot();
+                        initView();
                     });
+
+                    function initView() {
+                        renderRobot();
+                        addControlInputElement(1);
+                    }
                 </script>
             </div>
         </div>
