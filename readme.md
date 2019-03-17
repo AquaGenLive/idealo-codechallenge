@@ -16,11 +16,13 @@ The backend is stateless as the frontend manages the state (position and heading
 
 
 ## Potential things to improve
-- Frontend is in jQuery due a lack of time. I would try to build the frontend in a more sophisticated frontend framework like vue.js.
+- The frontend is in jQuery due to a lack of time. I would try to build the frontend in a more sophisticated frontend framework like vue.js.
 - Frontend tests should be added in a real-life project.
 - The frontend allows to dynamically add control inputs, but it doesn't allow to remove them. This could be a nice UX improvement.
-- The grid has a few glitches especially on mobile screen sizes. This could be improved.
-
+- The grid has a few glitches, especially on mobile screen sizes. This could be improved.
+- The app is only working with enabled JS. Especially with jQuery it could be modified to work without JS as well.
+- The app could understand a few more commands like: LEFT, BACKWARD FORWARD n steps instead of only 1, 2, or 3.
+- The control input fields could be changed to dropdowns with additional input fields for necessary parameters. Would lead to improved UX.
 
 
 ## Challenge
