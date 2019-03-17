@@ -1,6 +1,10 @@
 # Robot Control
 
-## Start application
+## Use the application
+Open the URL in your browser:
+https://idealo.serverless-infrastructure.com/
+
+## Build and run the application
 Run the app with maven-wrapper command:
 ```
 mvn -N io.takari:maven:wrapper
@@ -9,8 +13,8 @@ mvn -N io.takari:maven:wrapper
 
 Or start the app via IDE with Run-Configuration for Spring-Boot.
 
-## Usage
-Open the URL: http://localhost:8080
+Open the URL in your browser:
+http://localhost:8080
 
 ## General information
 The application consists of a jQuery based frontend and a Spring-Boot backend.
