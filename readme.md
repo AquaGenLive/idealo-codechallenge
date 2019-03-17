@@ -1,10 +1,26 @@
 # Robot Control
 
 ## Start application
-TODO
+Run the command:
+```
+./mvnw spring-boot:run
+```
+Or start the app via IDE with Run-Configuration for Spring-Boot.
 
 ## Usage
-TODO
+Open the URL: http://localhost:8080
+
+## General information
+The application consists of a jQuery based frontend and a Spring-Boot backend.
+The backend is stateless as the frontend manages the state (position and heading of the robot).
+
+
+## Potential things to improve
+- Frontend is in jQuery due a lack of time. I would try to build the frontend in a more sophisticated frontend framework like vue.js.
+- Frontend tests should be added in a real-life project.
+- The frontend allows to dynamically add control inputs, but it doesn't allow to remove them. This could be a nice UX improvement.
+- The grid has a few glitches especially on mobile screen sizes. This could be improved.
+
 
 
 ## Challenge
@@ -28,29 +44,3 @@ It is optional, if the backend will be also aware of the grid limits.
 Frontend should be styled. You could do it yourself or use some framework. 
 
 Please create a unit-test for only one(!) component, a full test-coverage is not necessary.
-
-### Backlog
-- [x] Setup Spring Boot app
-- [ ] Create Control and Rest?Controller to:
-    - [x] Create robot resource
-    - [ ] Set init position
-    - [ ] Move robot forward 1, 2 or 3 steps
-    - [ ] Let robot wait
-    - [ ] Turnaround
-    - [ ] Turn the robot right
-- [ ] Setup frontend
-- [ ] Create grid
-- [ ] Create controls
-- [ ] Interact with REST API
-
-### TODOS
-- [ ] Exchange jQuery with React?
-- [ ] Add remove of robot control form elements
-- [ ] Show filled form elements after submitting them (default is display: none on all control elements > 1)
-- [ ] Grid could be a many div's with image display:inline
-- [ ] Exception handling in frontend
-
-Generelles Vorgehen:
-- Frontend hält den State, backend ist stateless -> Das Frotnend muss bei jedem Request die aktuelle Postion des Roboters mitschicken
-- Den dynamischen Part im Frontend via Thymeleave zu machen ist echt nervig. Dafür ist Thymeleave wohl nicht ausgelegt. Besser ist es wohl das in JS zu machen.
-    - Das bedeutet, ich sollte erstmal mit jQuery einen AJAX Request machen.
